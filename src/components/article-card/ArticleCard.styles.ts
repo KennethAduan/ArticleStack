@@ -23,14 +23,14 @@ const useArticleCardStyles = () => {
     },
     title: {
       color: '#fff',
-      fontSize: 12.5,
+      fontSize: 14,
       textAlign: 'left',
       fontWeight: 'bold',
       marginTop: 10,
     },
     arrow: {
       position: 'absolute',
-      top: 20,
+      top: 10,
       right: 0,
       bottom: 0,
       color: '#fff',

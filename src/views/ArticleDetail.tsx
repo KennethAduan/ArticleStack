@@ -68,7 +68,7 @@ const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.header}>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-              <Text style={styles.closeText}>← Back</Text>
+              <Text style={styles.closeText}>Back</Text>
             </TouchableOpacity>
             <Text style={styles.title} numberOfLines={1}>
               {url}

@@ -3,9 +3,7 @@ import {StyleSheet} from 'react-native';
 const useArticleCardStyles = () => {
   return StyleSheet.create({
     container: {
-      borderRadius: 16,
-      elevation: 3,
-      shadowColor: '#000',
+      borderRadius: 14,
       shadowOffset: {
         width: 0,
         height: 2,
@@ -36,7 +34,7 @@ const useArticleCardStyles = () => {
       right: 0,
       bottom: 0,
       color: '#fff',
-      fontSize: 15,
+      fontSize: 25,
     },
   });
 };

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   StyleSheet,
   View,
@@ -19,7 +19,7 @@ interface ArticleDetailProps {
 
 const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const slideAnim = React.useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     if (visible) {

@@ -1,50 +1,45 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
-
+import {COLORS, GradientStyles} from '../constants';
 interface GradientCardProps {
   children: React.ReactNode;
   style?: ViewStyle;
-  gradientStyle: 'blue' | 'orange' | 'red' | 'pink' | 'purple';
-  isSelected?: boolean;
+  gradientStyle: GradientStyles;
 }
 
-const GradientCard = ({
-  children,
-  style,
-  gradientStyle,
-  isSelected,
-}: GradientCardProps) => {
+const GradientCard = ({children, style, gradientStyle}: GradientCardProps) => {
   const getGradientColors = () => {
     switch (gradientStyle) {
       case 'blue':
         return {
-          primary: '#2196F3',
-          secondary: '#42A5F5',
+          primary: COLORS.BLUE.primary,
+          secondary: COLORS.BLUE.secondary,
         };
       case 'orange':
         return {
-          primary: '#FF9800',
-          secondary: '#FFA726',
+          primary: COLORS.ORANGE.primary,
+          secondary: COLORS.ORANGE.secondary,
         };
       case 'red':
         return {
-          primary: '#D32F2F',
-          secondary: '#F44336',
+          primary: COLORS.RED.primary,
+          secondary: COLORS.RED.secondary,
         };
       case 'pink':
         return {
-          primary: '#E91E63',
-          secondary: '#EC407A',
+          primary: COLORS.PINK.primary,
+          secondary: COLORS.PINK.secondary,
         };
       case 'purple':
         return {
-          primary: '#9C27B0',
-          secondary: '#AB47BC',
+          primary: COLORS.PURPLE.primary,
+          secondary: COLORS.PURPLE.secondary,
         };
       default:
         return {
-          primary: '#2196F3',
-          secondary: '#42A5F5',
+          primary: COLORS.DEFAULT.primary,
+          secondary: COLORS.DEFAULT.secondary,
         };
     }
   };
@@ -59,7 +54,6 @@ const GradientCard = ({
         {
           backgroundColor: colors.primary,
         },
-        isSelected && styles.selected,
       ]}>
       <View
         style={[
@@ -82,10 +76,6 @@ const styles = StyleSheet.create({
   gradientOverlay: {
     ...StyleSheet.absoluteFillObject,
     transform: [{skewY: '-6deg'}, {scaleX: 1.5}],
-  },
-  selected: {
-    borderWidth: 2,
-    borderColor: '#fff',
   },
 });
 

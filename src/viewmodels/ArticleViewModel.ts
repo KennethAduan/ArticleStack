@@ -3,10 +3,23 @@ import {Article} from '../models/Article';
 
 export const useArticleViewModel = () => {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [isArticlePreviewVisible, setIsArticlePreviewVisible] = useState(false);
   const [isWebViewVisible, setIsWebViewVisible] = useState(false);
 
   const handleSelectArticle = (article: Article) => {
-    setSelectedArticle(article);
+    if (selectedArticle?.id === article.id) {
+      setSelectedArticle(null);
+      setIsArticlePreviewVisible(false);
+    } else {
+      setIsArticlePreviewVisible(true);
+      setSelectedArticle(article);
+    }
+    setIsWebViewVisible(false);
+  };
+
+  const handleCloseArticlePreview = () => {
+    setIsArticlePreviewVisible(false);
+    setSelectedArticle(null);
     setIsWebViewVisible(false);
   };
 
@@ -24,5 +37,7 @@ export const useArticleViewModel = () => {
     handleSelectArticle,
     handleReadMore,
     handleCloseWebView,
+    isArticlePreviewVisible,
+    handleCloseArticlePreview,
   };
 };

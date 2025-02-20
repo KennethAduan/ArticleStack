@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
-import {COLORS, GradientStyles} from '../constants';
+import {GradientStyles} from '../constants';
+import {getGradientColors} from '../utils';
 interface GradientCardProps {
   children: React.ReactNode;
   style?: ViewStyle;
@@ -9,43 +10,7 @@ interface GradientCardProps {
 }
 
 const GradientCard = ({children, style, gradientStyle}: GradientCardProps) => {
-  const getGradientColors = () => {
-    switch (gradientStyle) {
-      case 'blue':
-        return {
-          primary: COLORS.BLUE.primary,
-          secondary: COLORS.BLUE.secondary,
-        };
-      case 'orange':
-        return {
-          primary: COLORS.ORANGE.primary,
-          secondary: COLORS.ORANGE.secondary,
-        };
-      case 'red':
-        return {
-          primary: COLORS.RED.primary,
-          secondary: COLORS.RED.secondary,
-        };
-      case 'pink':
-        return {
-          primary: COLORS.PINK.primary,
-          secondary: COLORS.PINK.secondary,
-        };
-      case 'purple':
-        return {
-          primary: COLORS.PURPLE.primary,
-          secondary: COLORS.PURPLE.secondary,
-        };
-      default:
-        return {
-          primary: COLORS.DEFAULT.primary,
-          secondary: COLORS.DEFAULT.secondary,
-        };
-    }
-  };
-
-  const colors = getGradientColors();
-
+  const colors = getGradientColors(gradientStyle);
   return (
     <View
       style={[

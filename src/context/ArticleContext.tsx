@@ -1,11 +1,11 @@
-import React, {createContext, useContext} from 'react';
+import {createContext, ReactNode, useContext} from 'react';
 import {useArticleViewModel} from '../viewmodels/ArticleViewModel';
 
 const ArticleContext = createContext<ReturnType<
   typeof useArticleViewModel
 > | null>(null);
 
-export const ArticleProvider = ({children}: {children: React.ReactNode}) => {
+export const ArticleProvider = ({children}: {children: ReactNode}) => {
   const articleViewModel = useArticleViewModel();
 
   return (

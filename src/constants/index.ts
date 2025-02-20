@@ -1,4 +1,8 @@
 export const COLORS = {
+  GRAY: {
+    light: '#F5F5F5',
+    dark: '#333',
+  },
   BLUE: {
     primary: '#2196F3',
     secondary: '#42A5F5',

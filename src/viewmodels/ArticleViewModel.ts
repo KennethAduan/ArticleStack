@@ -20,15 +20,16 @@ export const useArticleViewModel = () => {
   const handleCloseArticlePreview = () => {
     setIsArticlePreviewVisible(false);
     setSelectedArticle(null);
-    setIsWebViewVisible(false);
   };
 
   const handleReadMore = () => {
     setIsWebViewVisible(true);
+    setIsArticlePreviewVisible(false);
   };
 
   const handleCloseWebView = () => {
     setIsWebViewVisible(false);
+    setIsArticlePreviewVisible(true);
   };
 
   return {

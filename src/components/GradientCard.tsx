@@ -23,7 +23,7 @@ const GradientCard = ({children, style, gradientStyle}: GradientCardProps) => {
       <View
         style={[
           styles.gradientOverlay,
-          {backgroundColor: colors.secondary, opacity: 0.7},
+          {backgroundColor: colors.secondary, opacity: 0.5},
         ]}
       />
       {children}
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   gradientOverlay: {
     ...StyleSheet.absoluteFillObject,
-    transform: [{skewY: '-6deg'}, {scaleX: 1.5}],
+    transform: [{translateY: -50}, {scaleY: 2}],
   },
 });
 

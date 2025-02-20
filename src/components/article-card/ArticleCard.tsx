@@ -24,7 +24,7 @@ const ArticleCard = ({
 
   const gradientStyle = gradientStyles[index % gradientStyles.length];
 
-  const styles = useArticleCardStyles({isSelected});
+  const styles = useArticleCardStyles();
 
   return (
     <TouchableOpacity

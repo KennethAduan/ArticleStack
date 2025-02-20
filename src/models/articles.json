@@ -1,0 +1,49 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "Keep Your Mobile Device Safe from Malware",
+      "summary": "Learn essential tips to protect your mobile banking apps and personal data from increasingly sophisticated cyber threats and malware attacks.",
+      "imageUrl": "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg",
+      "webUrl": "https://www.consumer.ftc.gov/articles/how-protect-your-mobile-device",
+      "content": "Protecting your mobile device from malware is crucial in today's digital environment. Learn about app permissions, secure networks, and regular security updates.",
+      "publishDate": "2024-03-20"
+    },
+    {
+      "id": "2",
+      "title": "How to Compute Your Money After Interest",
+      "summary": "A comprehensive guide to understanding interest rates, compound interest calculations, and maximizing your returns on savings and investments.",
+      "imageUrl": "https://images.pexels.com/photos/4386393/pexels-photo-4386393.jpeg",
+      "webUrl": "https://www.investopedia.com/terms/c/compoundinterest.asp",
+      "content": "Understanding how interest works is key to financial growth. Learn the formulas and strategies for calculating compound interest and planning your investments.",
+      "publishDate": "2024-03-19"
+    },
+    {
+      "id": "3",
+      "title": "5 Steps to Achieve Financial Freedom",
+      "summary": "Discover practical steps and strategies to achieve financial independence, from budgeting basics to advanced investment techniques.",
+      "imageUrl": "https://images.pexels.com/photos/4386373/pexels-photo-4386373.jpeg",
+      "webUrl": "https://www.nerdwallet.com/article/finance/financial-freedom",
+      "content": "Financial freedom isn't just a dream. Follow these concrete steps to build wealth, eliminate debt, and secure your financial future.",
+      "publishDate": "2024-03-18"
+    },
+    {
+      "id": "4",
+      "title": "Millennial's Guide to Saving",
+      "summary": "Modern saving strategies tailored for millennials, including digital banking tools, automated savings, and investment apps.",
+      "imageUrl": "https://images.pexels.com/photos/4386392/pexels-photo-4386392.jpeg",
+      "webUrl": "https://www.bankofamerica.com/financial-education/saving-budgeting/saving-and-budgeting-for-millennials/",
+      "content": "Millennials face unique financial challenges. Discover how to leverage technology and smart strategies to build your savings effectively.",
+      "publishDate": "2024-03-17"
+    },
+    {
+      "id": "5",
+      "title": "5 Money-Saving Challenges",
+      "summary": "Engaging and effective money-saving challenges that make building your emergency fund and savings both fun and rewarding.",
+      "imageUrl": "https://images.pexels.com/photos/4386371/pexels-photo-4386371.jpeg",
+      "webUrl": "https://www.daveramsey.com/blog/money-saving-challenges",
+      "content": "Transform saving from a chore into an exciting challenge. These proven methods will help you build substantial savings while having fun.",
+      "publishDate": "2024-03-16"
+    }
+  ]
+}

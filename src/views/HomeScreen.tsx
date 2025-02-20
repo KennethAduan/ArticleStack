@@ -7,13 +7,7 @@ import ArticlePreview from '../components/article-preview/ArticlePreview';
 import {COLORS} from '../constants';
 
 const HomeScreen = () => {
-  const {
-    selectedArticle,
-    handleSelectArticle,
-    handleReadMore,
-    isArticlePreviewVisible,
-    handleCloseArticlePreview,
-  } = useArticle();
+  const {selectedArticle, handleSelectArticle, handleReadMore} = useArticle();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,8 +23,6 @@ const HomeScreen = () => {
           <ArticlePreview
             article={selectedArticle || articles[0]}
             onReadMore={handleReadMore}
-            isVisible={isArticlePreviewVisible}
-            onClose={handleCloseArticlePreview}
           />
         </View>
       </View>

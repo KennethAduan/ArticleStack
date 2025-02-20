@@ -5,16 +5,11 @@ import useArticlePreviewStyles from './ArticlePreview.styles';
 
 interface ArticlePreviewProps {
   article: Article;
-  isVisible: boolean;
-  onClose: () => void;
+
   onReadMore: () => void;
 }
 
-const ArticlePreview = ({
-  article,
-
-  onReadMore,
-}: ArticlePreviewProps) => {
+const ArticlePreview = ({article, onReadMore}: ArticlePreviewProps) => {
   const styles = useArticlePreviewStyles();
 
   if (!article) {

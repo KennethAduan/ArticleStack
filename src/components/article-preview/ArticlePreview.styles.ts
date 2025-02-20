@@ -30,15 +30,11 @@ const useArticlePreviewStyles = () => {
     },
     readMoreButton: {
       backgroundColor: COLORS.RED.primary,
-      marginTop: 12,
       padding: 12,
       borderRadius: 12,
       alignItems: 'center',
       justifyContent: 'center',
-      bottom: -60,
-      position: 'absolute',
-      left: 12,
-      right: 12,
+      marginTop: 50,
     },
     readMoreText: {
       color: '#fff',

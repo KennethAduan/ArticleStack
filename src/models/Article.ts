@@ -4,8 +4,6 @@ export interface Article {
   summary: string;
   imageUrl: string;
   webUrl: string;
-  content: string;
-  publishDate: string;
 }
 
 // Import articles from JSON

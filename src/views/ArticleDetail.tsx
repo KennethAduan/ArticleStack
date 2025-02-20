@@ -10,6 +10,7 @@ import {
   Animated,
 } from 'react-native';
 import {WebView} from 'react-native-webview';
+import {COLORS} from '../constants';
 
 interface ArticleDetailProps {
   url: string | null;
@@ -86,7 +87,7 @@ const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
             />
             {isLoading && (
               <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#3b5998" />
+                <ActivityIndicator size="large" color={COLORS.BLUE.primary} />
               </View>
             )}
           </View>

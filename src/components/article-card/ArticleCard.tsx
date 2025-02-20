@@ -31,7 +31,10 @@ const ArticleCard = ({
       onPress={handlePress}
       activeOpacity={0.8}
       style={styles.container}>
-      <GradientCard gradientStyle={gradientStyle} style={styles.card}>
+      <GradientCard
+        gradientStyle={gradientStyle}
+        style={styles.card}
+        dataTestId={`gradient-card-${index}`}>
         <View style={styles.content}>
           <Text style={styles.title}>{article.title}</Text>
           {isSelected && <Text style={styles.arrow}>→</Text>}

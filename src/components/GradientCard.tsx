@@ -3,13 +3,20 @@ import React from 'react';
 import {StyleSheet, View, ViewStyle} from 'react-native';
 import {GradientStyles} from '../constants';
 import {getGradientColors} from '../utils';
+
 interface GradientCardProps {
   children: React.ReactNode;
   style?: ViewStyle;
   gradientStyle: GradientStyles;
+  dataTestId?: string;
 }
 
-const GradientCard = ({children, style, gradientStyle}: GradientCardProps) => {
+const GradientCard = ({
+  children,
+  style,
+  gradientStyle,
+  dataTestId,
+}: GradientCardProps) => {
   const colors = getGradientColors(gradientStyle);
   return (
     <View
@@ -19,7 +26,8 @@ const GradientCard = ({children, style, gradientStyle}: GradientCardProps) => {
         {
           backgroundColor: colors.primary,
         },
-      ]}>
+      ]}
+      testID={dataTestId}>
       <View
         style={[
           styles.gradientOverlay,

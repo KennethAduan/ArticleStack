@@ -17,18 +17,25 @@ const ArticlePreview = ({article, onReadMore}: ArticlePreviewProps) => {
   }
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView style={styles.scrollView} testID="article-preview-scroll">
       <Image
         source={{uri: article.imageUrl}}
         style={styles.image}
         resizeMode="cover"
+        accessible={true}
+        accessibilityRole="image"
       />
       <View style={styles.content}>
         <Text style={styles.title}>{article.title}</Text>
         <Text style={styles.summary} numberOfLines={5}>
           {article.summary}
         </Text>
-        <TouchableOpacity onPress={onReadMore} style={styles.readMoreButton}>
+        <TouchableOpacity
+          onPress={onReadMore}
+          style={styles.readMoreButton}
+          accessible={true}
+          accessibilityRole="button"
+          accessibilityLabel="Read more about this article">
           <Text style={styles.readMoreText}>Read More</Text>
         </TouchableOpacity>
       </View>

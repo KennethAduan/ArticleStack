@@ -15,6 +15,10 @@ const ArticlePreview = memo(({article, onReadMore}: ArticlePreviewProps) => {
     return null;
   }
 
+  const handleImageError = () => {
+    console.warn('Failed to load article image:', article.imageUrl);
+  };
+
   return (
     <ScrollView
       style={styles.scrollView}
@@ -29,6 +33,7 @@ const ArticlePreview = memo(({article, onReadMore}: ArticlePreviewProps) => {
           accessible={true}
           accessibilityRole="image"
           accessibilityLabel={`Image for article: ${article.title}`}
+          onError={handleImageError}
           testID="article-preview-image"
         />
         <Text

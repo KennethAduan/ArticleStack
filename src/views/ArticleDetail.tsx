@@ -25,14 +25,25 @@ const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
   }
 
   return (
-    <Modal transparent={false} visible={visible} onRequestClose={onClose}>
+    <Modal
+      transparent={false}
+      visible={visible}
+      onRequestClose={onClose}
+      animationType="slide">
       <View style={styles.container}>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+            <TouchableOpacity
+              onPress={onClose}
+              style={styles.closeButton}
+              accessibilityRole="button"
+              accessibilityLabel="Close article">
               <Text style={styles.closeText}>Back</Text>
             </TouchableOpacity>
-            <Text style={styles.title} numberOfLines={1}>
+            <Text
+              style={styles.title}
+              numberOfLines={1}
+              accessibilityRole="header">
               {url}
             </Text>
           </View>

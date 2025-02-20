@@ -14,6 +14,7 @@ const useArticlePreviewStyles = () => {
       width: '100%',
       height: 100,
       borderRadius: 8,
+      marginBottom: 8,
     },
     content: {
       padding: 20,
@@ -21,7 +22,7 @@ const useArticlePreviewStyles = () => {
     title: {
       fontSize: 14,
       fontWeight: '700',
-      marginBottom: 8,
+
       color: '#000',
     },
     summary: {
@@ -35,7 +36,7 @@ const useArticlePreviewStyles = () => {
       borderRadius: 12,
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 50,
+      marginTop: 40,
     },
     readMoreText: {
       color: '#fff',

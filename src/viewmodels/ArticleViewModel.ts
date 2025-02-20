@@ -1,27 +1,84 @@
-import {useState} from 'react';
+import {useState, useCallback, useMemo} from 'react';
 import {Article} from '../models/Article';
 
+interface ArticleState {
+  selectedArticle: Article | null;
+  isWebViewVisible: boolean;
+  error: string | null;
+  isLoading: boolean;
+}
+
 export const useArticleViewModel = () => {
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  const [isWebViewVisible, setIsWebViewVisible] = useState(false);
+  const [state, setState] = useState<ArticleState>({
+    selectedArticle: null,
+    isWebViewVisible: false,
+    error: null,
+    isLoading: false,
+  });
 
-  const handleSelectArticle = (article: Article) => {
-    setSelectedArticle(article);
-  };
+  const handleSelectArticle = useCallback((article: Article) => {
+    if (!article?.id) {
+      setState(prev => ({
+        ...prev,
+        error: 'Invalid article selected',
+      }));
+      return;
+    }
 
-  const handleReadMore = () => {
-    setIsWebViewVisible(true);
-  };
+    setState(prev => ({
+      ...prev,
+      selectedArticle: article,
+      error: null,
+    }));
+  }, []);
 
-  const handleCloseWebView = () => {
-    setIsWebViewVisible(false);
-  };
+  const handleReadMore = useCallback(() => {
+    if (!state.selectedArticle?.webUrl) {
+      setState(prev => ({
+        ...prev,
+        error: 'No article URL available',
+      }));
+      return;
+    }
 
-  return {
-    selectedArticle,
-    isWebViewVisible,
-    handleSelectArticle,
-    handleReadMore,
-    handleCloseWebView,
-  };
+    setState(prev => ({
+      ...prev,
+      isWebViewVisible: true,
+      error: null,
+    }));
+  }, [state.selectedArticle]);
+
+  const handleCloseWebView = useCallback(() => {
+    setState(prev => ({
+      ...prev,
+      isWebViewVisible: false,
+      error: null,
+    }));
+  }, []);
+
+  const handleClearError = useCallback(() => {
+    setState(prev => ({
+      ...prev,
+      error: null,
+    }));
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      ...state,
+      handleSelectArticle,
+      handleReadMore,
+      handleCloseWebView,
+      handleClearError,
+    }),
+    [
+      state,
+      handleSelectArticle,
+      handleReadMore,
+      handleCloseWebView,
+      handleClearError,
+    ],
+  );
+
+  return value;
 };

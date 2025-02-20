@@ -30,11 +30,12 @@ const useArticleCardStyles = () => {
     },
     arrow: {
       position: 'absolute',
-      top: 10,
+      top: 20,
       right: 0,
       bottom: 0,
       color: '#fff',
-      fontSize: 25,
+      fontWeight: 'bold',
+      fontSize: 20,
     },
   });
 };

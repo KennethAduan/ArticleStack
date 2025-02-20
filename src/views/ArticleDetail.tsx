@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,6 @@ import {
   SafeAreaView,
   Modal,
   ActivityIndicator,
-  Animated,
 } from 'react-native';
 import {WebView} from 'react-native-webview';
 import {COLORS} from '../constants';
@@ -20,29 +19,6 @@ interface ArticleDetailProps {
 
 const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const slideAnim = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    if (visible) {
-      Animated.timing(slideAnim, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    } else {
-      Animated.timing(slideAnim, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    }
-
-    // Cleanup function
-    return () => {
-      slideAnim.stopAnimation();
-      slideAnim.removeAllListeners();
-    };
-  }, [visible, slideAnim]);
 
   if (!url) {
     return null;
@@ -50,21 +26,7 @@ const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
 
   return (
     <Modal transparent={false} visible={visible} onRequestClose={onClose}>
-      <Animated.View
-        style={[
-          styles.container,
-          {
-            opacity: slideAnim,
-            transform: [
-              {
-                translateY: slideAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [50, 0],
-                }),
-              },
-            ],
-          },
-        ]}>
+      <View style={styles.container}>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.header}>
             <TouchableOpacity onPress={onClose} style={styles.closeButton}>
@@ -92,7 +54,7 @@ const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
             )}
           </View>
         </SafeAreaView>
-      </Animated.View>
+      </View>
     </Modal>
   );
 };

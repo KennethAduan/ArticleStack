@@ -1,43 +1,84 @@
-import {useState} from 'react';
+import {useState, useCallback, useMemo} from 'react';
 import {Article} from '../models/Article';
 
+interface ArticleState {
+  selectedArticle: Article | null;
+  isWebViewVisible: boolean;
+  error: string | null;
+  isLoading: boolean;
+}
+
 export const useArticleViewModel = () => {
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  const [isArticlePreviewVisible, setIsArticlePreviewVisible] = useState(false);
-  const [isWebViewVisible, setIsWebViewVisible] = useState(false);
+  const [state, setState] = useState<ArticleState>({
+    selectedArticle: null,
+    isWebViewVisible: false,
+    error: null,
+    isLoading: false,
+  });
 
-  const handleSelectArticle = (article: Article) => {
-    if (selectedArticle?.id === article.id) {
-      setSelectedArticle(null);
-      setIsArticlePreviewVisible(false);
-    } else {
-      setIsArticlePreviewVisible(true);
-      setSelectedArticle(article);
+  const handleSelectArticle = useCallback((article: Article) => {
+    if (!article?.id) {
+      setState(prev => ({
+        ...prev,
+        error: 'Invalid article selected',
+      }));
+      return;
     }
-    setIsWebViewVisible(false);
-  };
 
-  const handleCloseArticlePreview = () => {
-    setIsArticlePreviewVisible(false);
-    setSelectedArticle(null);
-    setIsWebViewVisible(false);
-  };
+    setState(prev => ({
+      ...prev,
+      selectedArticle: article,
+      error: null,
+    }));
+  }, []);
 
-  const handleReadMore = () => {
-    setIsWebViewVisible(true);
-  };
+  const handleReadMore = useCallback(() => {
+    if (!state.selectedArticle?.webUrl) {
+      setState(prev => ({
+        ...prev,
+        error: 'No article URL available',
+      }));
+      return;
+    }
 
-  const handleCloseWebView = () => {
-    setIsWebViewVisible(false);
-  };
+    setState(prev => ({
+      ...prev,
+      isWebViewVisible: true,
+      error: null,
+    }));
+  }, [state.selectedArticle]);
 
-  return {
-    selectedArticle,
-    isWebViewVisible,
-    handleSelectArticle,
-    handleReadMore,
-    handleCloseWebView,
-    isArticlePreviewVisible,
-    handleCloseArticlePreview,
-  };
+  const handleCloseWebView = useCallback(() => {
+    setState(prev => ({
+      ...prev,
+      isWebViewVisible: false,
+      error: null,
+    }));
+  }, []);
+
+  const handleClearError = useCallback(() => {
+    setState(prev => ({
+      ...prev,
+      error: null,
+    }));
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      ...state,
+      handleSelectArticle,
+      handleReadMore,
+      handleCloseWebView,
+      handleClearError,
+    }),
+    [
+      state,
+      handleSelectArticle,
+      handleReadMore,
+      handleCloseWebView,
+      handleClearError,
+    ],
+  );
+
+  return value;
 };

@@ -6,7 +6,7 @@ import {ArticleProvider} from './src/context/ArticleContext';
 const App = () => {
   return (
     <ArticleProvider>
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      <StatusBar barStyle="dark-content" backgroundColor="#f5f5f5" />
       <AppRouter />
     </ArticleProvider>
   );

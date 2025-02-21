@@ -1,27 +1,20 @@
 import {StyleSheet} from 'react-native';
 
-type ArticleCardStylesProps = {
-  isSelected: boolean;
-};
-
-const useArticleCardStyles = ({isSelected}: ArticleCardStylesProps) => {
+const useArticleCardStyles = () => {
   return StyleSheet.create({
     container: {
-      borderRadius: 16,
-      elevation: 3,
-      shadowColor: '#000',
+      borderRadius: 14,
       shadowOffset: {
         width: 0,
         height: 2,
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      height: '30%',
     },
     card: {
-      padding: 24,
+      padding: 10,
       borderRadius: 16,
-      height: '100%',
+      height: '40%',
     },
     content: {
       flex: 1,
@@ -30,19 +23,19 @@ const useArticleCardStyles = ({isSelected}: ArticleCardStylesProps) => {
     },
     title: {
       color: '#fff',
-      fontSize: 27,
-      alignItems: 'center',
-      fontWeight: '700',
-      lineHeight: 32,
-      marginTop: isSelected ? 10 : 25,
+      fontSize: 14,
+      textAlign: 'left',
+      fontWeight: 'bold',
+      marginTop: 10,
     },
     arrow: {
       position: 'absolute',
-      top: 40,
+      top: 20,
       right: 0,
       bottom: 0,
       color: '#fff',
-      fontSize: 24,
+      fontWeight: 'bold',
+      fontSize: 20,
     },
   });
 };

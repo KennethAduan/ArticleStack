@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, FlatList} from 'react-native';
 import {Article} from '../models/Article';
 import ArticleCard from './article-card/ArticleCard';
 
@@ -15,37 +15,49 @@ const StackedCards = ({
   selectedArticle,
   onSelectArticle,
 }: StackedCardsProps) => {
+  const renderItem = ({item, index}: {item: Article; index: number}) => (
+    <View
+      style={[
+        styles.cardWrapper,
+        {
+          marginTop: index > 0 ? -460 : 0,
+          zIndex: index,
+        },
+      ]}>
+      <ArticleCard
+        article={item}
+        isSelected={selectedArticle?.id === item.id}
+        onSelect={onSelectArticle}
+        index={index}
+      />
+    </View>
+  );
+
   return (
     <View style={styles.container}>
-      {articles.map((article, index) => (
-        <View
-          key={article.id}
-          style={[
-            styles.cardWrapper,
-            {
-              marginTop: index > 0 ? -460 : 0,
-              zIndex: index,
-            },
-          ]}>
-          <ArticleCard
-            article={article}
-            isSelected={selectedArticle?.id === article.id}
-            onSelect={onSelectArticle}
-            index={index}
-          />
-        </View>
-      ))}
+      <FlatList
+        data={articles}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        scrollEnabled={false}
+        contentContainerStyle={styles.flatListContent}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    flex: 1,
+    padding: 4,
   },
+  flatListContent: {
+    marginTop: 120,
+  },
+
   cardWrapper: {
     width: '100%',
-    height: 600,
+    height: 530,
   },
 });
 

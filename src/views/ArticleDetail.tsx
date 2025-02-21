@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,9 +7,9 @@ import {
   SafeAreaView,
   Modal,
   ActivityIndicator,
-  Animated,
 } from 'react-native';
 import {WebView} from 'react-native-webview';
+import {COLORS} from '../constants';
 
 interface ArticleDetailProps {
   url: string | null;
@@ -19,57 +19,31 @@ interface ArticleDetailProps {
 
 const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const slideAnim = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    if (visible) {
-      Animated.timing(slideAnim, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    } else {
-      Animated.timing(slideAnim, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    }
-
-    // Cleanup function
-    return () => {
-      slideAnim.stopAnimation();
-      slideAnim.removeAllListeners();
-    };
-  }, [visible, slideAnim]);
 
   if (!url) {
     return null;
   }
 
   return (
-    <Modal transparent={false} visible={visible} onRequestClose={onClose}>
-      <Animated.View
-        style={[
-          styles.container,
-          {
-            opacity: slideAnim,
-            transform: [
-              {
-                translateY: slideAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [50, 0],
-                }),
-              },
-            ],
-          },
-        ]}>
+    <Modal
+      transparent={false}
+      visible={visible}
+      onRequestClose={onClose}
+      animationType="slide">
+      <View style={styles.container}>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-              <Text style={styles.closeText}>← Back</Text>
+            <TouchableOpacity
+              onPress={onClose}
+              style={styles.closeButton}
+              accessibilityRole="button"
+              accessibilityLabel="Close article">
+              <Text style={styles.closeText}>Back</Text>
             </TouchableOpacity>
-            <Text style={styles.title} numberOfLines={1}>
+            <Text
+              style={styles.title}
+              numberOfLines={1}
+              accessibilityRole="header">
               {url}
             </Text>
           </View>
@@ -86,12 +60,12 @@ const ArticleDetail = ({url, visible, onClose}: ArticleDetailProps) => {
             />
             {isLoading && (
               <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#3b5998" />
+                <ActivityIndicator size="large" color={COLORS.BLUE.primary} />
               </View>
             )}
           </View>
         </SafeAreaView>
-      </Animated.View>
+      </View>
     </Modal>
   );
 };
